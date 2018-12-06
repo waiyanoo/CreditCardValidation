@@ -1,0 +1,54 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="row">
+            <div class="col-md-12">
+                <h3>Credit Card Validation</h3>
+            </div>
+            <div class="col-md-4">
+                <label>Card Number</label>
+            </div>
+            <div class="col-md-8">
+                <div class="form-group">
+                    <select id="credit_card_type" class="form-control">                        
+                        
+                    </select>
+                </div>  
+            </div>
+            <div class="col-md-4">
+                <label>Card Number</label>
+            </div>
+            <div class="col-md-8">
+                <div class="form-group">
+                    <input autocomplete="off" class="form-control" id="credit_card_number" maxlength="19" name="credit_card_number" type="text" value="" placeholder="Card number (Required)">
+                    <lable id="credit_card_number_invalid" hidden style="color:red">Please enter valid card number</lable>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <label>Expiry Date</label>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <select id="credit_card_expired_month" class="form-control">
+                        
+                    </select>  
+                </div>                 
+            </div>
+            <div class="col-md-5">
+                <div class="form-group">
+                    <select id="credit_card_expired_year" class="form-control">
+                        
+                    </select>
+                </div>   
+            </div>
+        </div>
+        <div class="col-md-12">
+            <input class="btn btn-primary" id="btnValidate" type="button" value="Continue Payment">
+        </div>
+    </div>
+
+</div>
+
