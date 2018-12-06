@@ -10,7 +10,7 @@ namespace CreditCardValidation.Domain
     {
         public Guid Card_Info_Id { get; set; }
 
-        public int Card_Number { get; set; }
+        public decimal Card_Number { get; set; }
 
         public int Card_Expiry_Month { get; set; }
 

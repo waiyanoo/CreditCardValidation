@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Users\WaiYanOo\documents\visual studio 2015\Projects\CreditCardValidation\CreditCardValidation.Repository\EntityFramework\CreditCardContext.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\WaiYanOo\Source\Repos\waiyanoo\CreditCardValidation\CreditCardValidation.Repository\EntityFramework\CreditCardContext.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

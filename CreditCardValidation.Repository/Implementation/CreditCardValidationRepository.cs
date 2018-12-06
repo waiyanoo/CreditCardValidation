@@ -21,11 +21,14 @@ namespace CreditCardValidation.Repository.Implementation
         {
             using(contex = new CreditCard_DBEntities())
             {
+                CardInfoModel model = new CardInfoModel();
                 var result = contex.FindCreditCardByNumber(id);
-                if(result != null)
+                foreach (card_info_tbl tbl  in result)
                 {
                     return true;
+
                 }
+               
                 return false;
             };
         }

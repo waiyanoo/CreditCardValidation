@@ -29,13 +29,40 @@ namespace CreditCardValidation.Repository.EntityFramework
     
         public virtual DbSet<card_info_tbl> card_info_tbl { get; set; }
     
-        public virtual ObjectResult<FindCreditCardByNumber_Result> FindCreditCardByNumber(Nullable<decimal> cardNumber)
+        public virtual ObjectResult<card_info_tbl> FindCreditCardByNumber(Nullable<decimal> cardNumber)
         {
             var cardNumberParameter = cardNumber.HasValue ?
                 new ObjectParameter("CardNumber", cardNumber) :
                 new ObjectParameter("CardNumber", typeof(decimal));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<FindCreditCardByNumber_Result>("FindCreditCardByNumber", cardNumberParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<card_info_tbl>("FindCreditCardByNumber", cardNumberParameter);
+        }
+    
+        public virtual ObjectResult<card_info_tbl> FindCreditCardByNumber(Nullable<decimal> cardNumber, MergeOption mergeOption)
+        {
+            var cardNumberParameter = cardNumber.HasValue ?
+                new ObjectParameter("CardNumber", cardNumber) :
+                new ObjectParameter("CardNumber", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<card_info_tbl>("FindCreditCardByNumber", mergeOption, cardNumberParameter);
+        }
+    
+        public virtual ObjectResult<card_info_tbl> FindCreditCardByNumber1(Nullable<decimal> cardNumber)
+        {
+            var cardNumberParameter = cardNumber.HasValue ?
+                new ObjectParameter("CardNumber", cardNumber) :
+                new ObjectParameter("CardNumber", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<card_info_tbl>("FindCreditCardByNumber1", cardNumberParameter);
+        }
+    
+        public virtual ObjectResult<card_info_tbl> FindCreditCardByNumber1(Nullable<decimal> cardNumber, MergeOption mergeOption)
+        {
+            var cardNumberParameter = cardNumber.HasValue ?
+                new ObjectParameter("CardNumber", cardNumber) :
+                new ObjectParameter("CardNumber", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<card_info_tbl>("FindCreditCardByNumber1", mergeOption, cardNumberParameter);
         }
     }
 }

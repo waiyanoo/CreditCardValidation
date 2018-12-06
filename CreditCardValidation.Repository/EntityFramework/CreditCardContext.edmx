@@ -36,7 +36,10 @@
         </EntityType>
         <EntityContainer Name="CreditCard_DBEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="card_info_tbl" EntityType="Self.card_info_tbl" />
-          <FunctionImport Name="FindCreditCardByNumber" ReturnType="Collection(CreditCard_DBModel.FindCreditCardByNumber_Result)">
+          <FunctionImport Name="FindCreditCardByNumber" EntitySet="card_info_tbl" ReturnType="Collection(CreditCard_DBModel.card_info_tbl)">
+            <Parameter Name="CardNumber" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="FindCreditCardByNumber1" EntitySet="card_info_tbl" ReturnType="Collection(CreditCard_DBModel.card_info_tbl)">
             <Parameter Name="CardNumber" Mode="In" Type="Decimal" />
           </FunctionImport>
         </EntityContainer>
@@ -63,15 +66,8 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="FindCreditCardByNumber" FunctionName="CreditCard_DBModel.Store.FindCreditCardByNumber">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="CreditCard_DBModel.FindCreditCardByNumber_Result">
-                <ScalarProperty Name="card_info_id" ColumnName="card_info_id" />
-                <ScalarProperty Name="card_number" ColumnName="card_number" />
-                <ScalarProperty Name="card_expiry_month" ColumnName="card_expiry_month" />
-                <ScalarProperty Name="card_expiry_year" ColumnName="card_expiry_year" />
-              </ComplexTypeMapping>
-            </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="FindCreditCardByNumber1" FunctionName="CreditCard_DBModel.Store.FindCreditCardByNumber" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
