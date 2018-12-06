@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="CreditCard_DBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="card_info_tbl">
+          <Key>
+            <PropertyRef Name="card_info_id" />
+          </Key>
+          <Property Name="card_info_id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="card_number" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="card_expiry_month" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="card_expiry_year" Type="numeric" Precision="18" Scale="0" />
+        </EntityType>
+        <Function Name="FindCreditCardByNumber" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CardNumber" Type="numeric" Mode="In" />
+        </Function>
+        <EntityContainer Name="CreditCard_DBModelStoreContainer">
+          <EntitySet Name="card_info_tbl" EntityType="Self.card_info_tbl" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CreditCard_DBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="card_info_tbl">
+          <Key>
+            <PropertyRef Name="card_info_id" />
+          </Key>
+          <Property Name="card_info_id" Type="Guid" Nullable="false" />
+          <Property Name="card_number" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="card_expiry_month" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="card_expiry_year" Type="Decimal" Precision="18" Scale="0" />
+        </EntityType>
+        <EntityContainer Name="CreditCard_DBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="card_info_tbl" EntityType="Self.card_info_tbl" />
+          <FunctionImport Name="FindCreditCardByNumber" ReturnType="Collection(CreditCard_DBModel.FindCreditCardByNumber_Result)">
+            <Parameter Name="CardNumber" Mode="In" Type="Decimal" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="FindCreditCardByNumber_Result">
+          <Property Type="Guid" Name="card_info_id" Nullable="false" />
+          <Property Type="Decimal" Name="card_number" Nullable="true" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="card_expiry_month" Nullable="true" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="card_expiry_year" Nullable="true" Precision="18" Scale="0" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CreditCard_DBModelStoreContainer" CdmEntityContainer="CreditCard_DBEntities">
+          <EntitySetMapping Name="card_info_tbl">
+            <EntityTypeMapping TypeName="CreditCard_DBModel.card_info_tbl">
+              <MappingFragment StoreEntitySet="card_info_tbl">
+                <ScalarProperty Name="card_info_id" ColumnName="card_info_id" />
+                <ScalarProperty Name="card_number" ColumnName="card_number" />
+                <ScalarProperty Name="card_expiry_month" ColumnName="card_expiry_month" />
+                <ScalarProperty Name="card_expiry_year" ColumnName="card_expiry_year" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="FindCreditCardByNumber" FunctionName="CreditCard_DBModel.Store.FindCreditCardByNumber">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CreditCard_DBModel.FindCreditCardByNumber_Result">
+                <ScalarProperty Name="card_info_id" ColumnName="card_info_id" />
+                <ScalarProperty Name="card_number" ColumnName="card_number" />
+                <ScalarProperty Name="card_expiry_month" ColumnName="card_expiry_month" />
+                <ScalarProperty Name="card_expiry_year" ColumnName="card_expiry_year" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
