@@ -19,6 +19,8 @@
     $("#credit_card_number_invalid").hide();
     $("#credit_card_expire_month_invalid").hide();
     $("#credit_card_expire_year_invalid").hide();
+    $("#success_message").hide();
+    $("#error_message").hide();
 
     $("#credit_card_number").on("keypress keyup blur", function (event) {
         $(this).val($(this).val().replace(/[^\d].+/, ""));
@@ -162,7 +164,28 @@
         }
     }
     
+    $('#validate_card').click(function () {
+        var id = $("#credit_card_number").val();
+        $.ajax({
+            url: '/CreditCardService/ReadCreditCardbyCardNumber/'+id,
+            type: 'GET',
+            success: function (response) {
+                if (response == true) {
+                    $("#success_message").show();
+                    $("#error_message").hide();
+                }
+                else {
+                    $("#success_message").hide();
+                    $("#error_message").show();
+                }
+            },
+            error: function (error) {
+                DisplayError(error.statusText);
+            }
+        });
+    })
 
+    /*** Validate Leap Year***/
     function validateLeapYear() {
         var year = $("#credit_card_expired_year").val();
         if (year % 4 == 0) {
@@ -172,7 +195,7 @@
             $("#credit_card_expire_year_invalid").show();
         }
     }
-
+    /**Validate Prime Number**/
     function validatePrimeNumber() {
         var num = $("#credit_card_expired_year").val();
         for (var i = 2; i < num; i++)
@@ -180,4 +203,6 @@
         return num !== 1 && num !== 0;
     }
 
-});
+
+
+}); 
