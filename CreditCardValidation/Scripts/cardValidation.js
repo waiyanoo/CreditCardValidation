@@ -17,6 +17,8 @@
 
     $('#credit_card_type').prop('disabled', 'disabled');
     $("#credit_card_number_invalid").hide();
+    $("#credit_card_expire_month_invalid").hide();
+    $("#credit_card_expire_year_invalid").hide();
 
     $("#credit_card_number").on("keypress keyup blur", function (event) {
         $(this).val($(this).val().replace(/[^\d].+/, ""));
@@ -64,9 +66,92 @@
                 $("#credit_card_number_invalid").hide();
             }
         }
+    });
 
+    /**Card Expiry Validation**/
 
+    $("#credit_card_expired_month").on("change blur", function (event) {
+        if ($("#credit_card_expired_month").val() == "") {
+
+            $("#credit_card_expire_month_invalid").show();
+        }
+        else {
+            $("#credit_card_expire_month_invalid").hide();
+            if ($("#credit_card_expired_year").val() == "") {
+                $("#credit_card_expire_year_invalid").show();
+            }
+            else {
+                $("#credit_card_expire_year_invalid").hide();
+                if ($("#credit_card_type").val() == "Visa") {
+                    validateLeapYear();
+                }
+                else if ($("#credit_card_type").val() == "Master") {
+                    if (validatePrimeNumber()) {
+                        $("#credit_card_expire_year_invalid").show();
+                    }
+                    else {
+                        $("#credit_card_expire_year_invalid").hide();
+                    }
+                }
+                else {
+                    $("#credit_card_expire_year_invalid").hide();
+                }
+            }
+        }
 
     });
+
+    $("#credit_card_expired_year").on("change blur", function (event) {
+        if ($("#credit_card_expired_month").val() == "") {
+            $("#credit_card_expire_month_invalid").show();
+        }
+        else {
+            $("#credit_card_expire_month_invalid").hide();
+            if ($("#credit_card_expired_year").val() == "") {
+                $("#credit_card_expire_year_invalid").show();
+            }
+            else {
+                $("#credit_card_expire_year_invalid").hide();
+                if ($("#credit_card_expired_year").val() == "") {
+                    $("#credit_card_expire_year_invalid").show();
+                }
+                else {
+                    $("#credit_card_expire_year_invalid").hide();
+                    if ($("#credit_card_type").val() == "Visa") {
+                        validateLeapYear();
+                    }
+                    else if ($("#credit_card_type").val() == "Master") {
+                        if (validatePrimeNumber()) {
+                            $("#credit_card_expire_year_invalid").show();
+                        }
+                        else {
+                            $("#credit_card_expire_year_invalid").hide();
+                        }
+                    }
+                    else {
+                        $("#credit_card_expire_year_invalid").hide();
+                    }
+                }
+            }
+        }
+
+    });
+
+    function validateLeapYear() {
+        var year = $("#credit_card_expired_year").val();
+        if (year % 4 == 0) {
+            $("#credit_card_expire_year_invalid").hide();
+        }
+        else {
+            $("#credit_card_expire_year_invalid").show();
+        }
+    }
+
+    function validatePrimeNumber() {
+        var num = $("#credit_card_expired_year").val();
+        for (var i = 2; i < num; i++)
+            if (num % i === 0) return false;
+        return num !== 1 && num !== 0;
+    }
 
 });
