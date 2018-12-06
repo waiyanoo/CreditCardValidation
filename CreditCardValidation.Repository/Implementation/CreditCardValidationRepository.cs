@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using CreditCardValidation.Domain;
 using CreditCardValidation.Repository.EntityFramework;
 
-namespace CreditCardValidation.Repository
+namespace CreditCardValidation.Repository.Implementation
 {
     public class CreditCardValidationRepository : ICreditCardValidationRepository
     {

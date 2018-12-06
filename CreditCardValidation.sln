@@ -9,12 +9,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CreditCardValidation.Domain
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CreditCardValidation.Repository", "CreditCardValidation.Repository\CreditCardValidation.Repository.csproj", "{3E496541-2080-45DD-8219-DA6DC5467EA4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CreditCardValidation.Service", "CreditCardValidation.Service\CreditCardValidation.Service.csproj", "{89AAC842-4C68-47CC-BFE7-B7C9A8ADA1EF}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SQL", "SQL", "{7F281666-D086-4AE1-B336-0FB1C8A865BD}"
 	ProjectSection(SolutionItems) = preProject
 		..\..\..\..\Desktop\sqlscript.sql = ..\..\..\..\Desktop\sqlscript.sql
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CreditCardValidation.Service", "CreditCardValidation.Service\CreditCardValidation.Service.csproj", "{89AAC842-4C68-47CC-BFE7-B7C9A8ADA1EF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
