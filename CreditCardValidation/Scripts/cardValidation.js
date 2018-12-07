@@ -69,6 +69,7 @@
                 $("#credit_card_number_invalid").hide();
             }
         }
+        validateExpiry();
         validateButton();
     });
 
@@ -76,37 +77,16 @@
 
     $("#credit_card_expired_month").on("change blur", function (event) {
 
-        if ($("#credit_card_expired_month").val() == "") {
-
-            $("#credit_card_expire_month_invalid").show();
-        }
-        else {
-            $("#credit_card_expire_month_invalid").hide();
-            if ($("#credit_card_expired_year").val() == "") {
-                $("#credit_card_expire_year_invalid").show();
-            }
-            else {
-                $("#credit_card_expire_year_invalid").hide();
-                if ($("#credit_card_type").val() == "Visa") {
-                    validateLeapYear();
-                }
-                else if ($("#credit_card_type").val() == "Master") {
-                    if (validatePrimeNumber()) {
-                        $("#credit_card_expire_year_invalid").hide();
-                    }
-                    else {
-                        $("#credit_card_expire_year_invalid").show();
-                    }
-                }
-                else {
-                    $("#credit_card_expire_year_invalid").hide();
-                }
-            }
-        }
+        validateExpiry();
         validateButton();
     });
 
     $("#credit_card_expired_year").on("change blur", function (event) {
+        validateExpiry();
+        validateButton();
+    });
+
+    function validateExpiry() {
         if ($("#credit_card_expired_month").val() == "") {
             $("#credit_card_expire_month_invalid").show();
         }
@@ -139,16 +119,8 @@
                 }
             }
         }
-        validateButton();
-    });
-    console.log($("#credit_card_expire_year_invalid").is(":hidden"));
-    console.log($("#credit_card_expire_month_invalid").is(":hidden"));
-    console.log($("#credit_card_number_invalid").is(":hidden"));
-    console.log($("#credit_card_type").val() != "");
-    console.log($("#credit_card_number").val() != "");
-    console.log($("#credit_card_expired_year").val() != "");
-    console.log($("#credit_card_expired_month").val() != "");
-    console.log();
+    }
+
     function validateButton() {
         if ($("#credit_card_expire_year_invalid").is(":hidden")
             && $("#credit_card_expire_month_invalid").is(":hidden")
